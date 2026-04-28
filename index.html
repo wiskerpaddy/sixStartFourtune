@@ -201,6 +201,15 @@ const melody = [
 
     function showHell() { document.getElementById('hell-overlay').style.display = 'flex'; }
     function closeHell() { document.getElementById('hell-overlay').style.display = 'none'; }
+
+    // サービスワーカー（sw.js）をブラウザに登録する
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registered!'))
+            .catch(err => console.error('Service Worker failed:', err));
+        });
+    }
 </script>
 </body>
 </html>
